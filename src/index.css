@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  #root {
+    min-height: 100vh;
+    width: 100%;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply bg-umbc-gold text-black font-semibold px-6 py-3 rounded-lg hover:bg-umbc-gold-dark transition-colors;
+  }
+  .btn-outline {
+    @apply border border-umbc-gold text-umbc-gold px-6 py-3 rounded-lg hover:bg-umbc-gold hover:text-black transition-colors;
+  }
+  .card {
+    @apply bg-umbc-gray rounded-xl p-4;
+  }
+  .input-field {
+    @apply bg-umbc-gray-mid border border-umbc-gray-light rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-umbc-gold w-full;
+  }
+  .section-header {
+    @apply flex items-center justify-between cursor-pointer py-3 px-4 rounded-lg hover:bg-umbc-gray-mid transition-colors;
+  }
+  .progress-bar {
+    @apply h-2 rounded-full bg-umbc-gray-light overflow-hidden;
+  }
+  .progress-fill {
+    @apply h-full rounded-full bg-umbc-gold transition-all duration-500;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #3d3d3d;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FFD200;
+}
+
+/* Smooth transitions */
+.collapsible-enter {
+  max-height: 0;
+  overflow: hidden;
+}
+.collapsible-enter-active {
+  max-height: 2000px;
+  transition: max-height 0.3s ease-in-out;
+}
+.collapsible-exit {
+  max-height: 2000px;
+}
+.collapsible-exit-active {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
