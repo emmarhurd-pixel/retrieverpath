@@ -1,73 +1,137 @@
-# React + TypeScript + Vite
+# 🐾 RetrieverPath — UMBC Degree Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured UMBC academic degree planning web app built with React, TypeScript, Supabase, and Vite.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+| Page | Description |
+|------|-------------|
+| **Onboarding** | Select major(s), tracks, minors, certificates, transfer credits, and graduation semester |
+| **Dashboard** | Live degree tracker — progress bars per requirement, color-coded courses, prereq display |
+| **Courses** | Log completed / in-progress / future courses grouped by semester; transcript OCR upload |
+| **Planner** | Semester-by-semester course planning with AI suggestions, difficulty ratings, and scheduling warnings |
+| **Study Network** | Join course study groups, post messages, add friends, compare schedules |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Credit Engine Rules
+- Upper division = course number starts with 3 or 4
+- Courses only satisfy department requirements when they match that exact department
+- No double-counting across categories unless UMBC policy explicitly allows it
+- GPA calculated from completed courses only
+- Overall progress counts completed required credits only
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend**: React 19 + TypeScript + Vite
+- **Styling**: Tailwind CSS v3 (UMBC black & gold theme)
+- **State**: Zustand (persisted to localStorage)
+- **Database / Auth**: Supabase (PostgreSQL + Row Level Security)
+- **Hosting**: Vercel (recommended)
+- **Icons**: Lucide React
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+
+### 1. Clone
+
+```bash
+git clone https://github.com/YOUR_USERNAME/retrieverpath.git
+cd retrieverpath
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Set up Supabase
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Create a free project at [supabase.com](https://supabase.com)
+2. In the SQL Editor, run the entire contents of `supabase/schema.sql`
+3. Copy your **Project URL** and **anon public key** from Project Settings → API
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3. Configure environment variables
+
+```bash
+cp .env.example .env.local
 ```
+
+Edit `.env.local`:
+```
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
+```
+
+> ⚠️ Never commit `.env.local` — it is already in `.gitignore`
+
+### 4. Run locally
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173)
+
+---
+
+## Deploy to Vercel
+
+1. Push to GitHub
+2. Go to [vercel.com](https://vercel.com) → Import project from GitHub
+3. Add environment variables:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+4. Deploy — Vercel auto-detects Vite
+
+---
+
+## Project Structure
+
+```
+retrieverpath/
+├── supabase/
+│   └── schema.sql          # Full Supabase schema + RLS policies
+├── src/
+│   ├── data/
+│   │   ├── programs.ts     # 36 UMBC programs (majors, minors, certs)
+│   │   ├── courses.ts      # 236 UMBC courses with prereqs + schedule data
+│   │   └── transferCredits.ts  # AP/IB/CLEP mappings
+│   ├── lib/
+│   │   ├── creditEngine.ts # Credit counting, GPA, upper-div, prereq logic
+│   │   └── supabase.ts     # Supabase client + type definitions
+│   ├── store/
+│   │   └── useStore.ts     # Zustand global store (persisted)
+│   ├── types/
+│   │   └── index.ts        # All TypeScript interfaces
+│   ├── components/
+│   │   ├── BottomNav.tsx
+│   │   ├── Collapsible.tsx
+│   │   ├── Header.tsx
+│   │   └── ProgressBar.tsx
+│   ├── pages/
+│   │   ├── Onboarding.tsx  # 3-screen onboarding flow
+│   │   ├── Dashboard.tsx   # Degree tracker
+│   │   ├── Courses.tsx     # Course log
+│   │   ├── Planner.tsx     # Semester planner
+│   │   └── StudyNetwork.tsx# Social / study groups
+│   └── App.tsx
+├── .env.example            # Template — copy to .env.local
+└── tailwind.config.js
+```
+
+---
+
+## Adding Real Supabase Auth
+
+The app currently runs fully on local Zustand state so you can test without any backend. To wire up real authentication:
+
+1. Enable Email/Password auth in Supabase Dashboard → Authentication
+2. Call `supabase.auth.signUp()` / `supabase.auth.signInWithPassword()` in an Auth component
+3. Replace the local store writes with Supabase table inserts/selects
+4. RLS policies are already configured in `schema.sql`
+
+---
+
+## License
+
+MIT — built for UMBC students. Go Retrievers! 🐾
