@@ -253,13 +253,33 @@ function ProfileStep({
         <label className="block text-sm font-medium text-gray-300 mb-1.5">
           Certificate(s) <span className="text-gray-500 font-normal">(optional)</span>
         </label>
-        <SearchableMultiSelect
-          placeholder="Search certificates..."
-          options={certOptions}
-          selected={certificates}
-          onAdd={(id) => setCertificates([...certificates, id])}
-          onRemove={(id) => setCertificates(certificates.filter((c) => c !== id))}
-        />
+        {/* Selected certificate chips */}
+        {certificates.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-2">
+            {certOptions
+              .filter((o) => certificates.includes(o.id))
+              .map((o) => (
+                <Chip key={o.id} label={o.name} onRemove={() => setCertificates(certificates.filter((c) => c !== o.id))} />
+              ))}
+          </div>
+        )}
+        <select
+          value=""
+          onChange={(e) => {
+            if (e.target.value && !certificates.includes(e.target.value)) {
+              setCertificates([...certificates, e.target.value]);
+            }
+          }}
+          className="w-full bg-umbc-gray-mid border border-umbc-gray-light rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-umbc-gold"
+        >
+          <option value="">— Select certificate —</option>
+          {certOptions
+            .filter((o) => !certificates.includes(o.id))
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((o) => (
+              <option key={o.id} value={o.id}>{o.name}</option>
+            ))}
+        </select>
       </div>
 
       {/* Pre-Professional */}
@@ -314,6 +334,7 @@ interface TransferFormState {
   type: string;
   subject: string;
   scoreOrGrade: string;
+  creditsOverride: string;
 }
 
 function TransferStep({ transferCredits, setTransferCredits }: TransferStepProps) {
@@ -322,11 +343,12 @@ function TransferStep({ transferCredits, setTransferCredits }: TransferStepProps
     type: '',
     subject: '',
     scoreOrGrade: '',
+    creditsOverride: '',
   });
 
   const subjectOptions =
     form.type === 'AP' || form.type === 'IB' || form.type === 'CLEP'
-      ? TRANSFER_MAPPINGS.filter((m) => m.type === form.type).map((m) => m.subject)
+      ? [...TRANSFER_MAPPINGS.filter((m) => m.type === form.type).map((m) => m.subject)].sort((a, b) => a.localeCompare(b))
       : [];
 
   const mappedCredit =
@@ -336,17 +358,20 @@ function TransferStep({ transferCredits, setTransferCredits }: TransferStepProps
 
   const handleAdd = () => {
     if (!form.type || !form.subject) return;
+    const resolvedCredits = form.creditsOverride
+      ? parseFloat(form.creditsOverride)
+      : (mappedCredit?.credits ?? 3);
     const credit: TransferCredit = {
       id: uuidv4(),
       type: form.type as TransferCredit['type'],
       subject: form.subject,
       scoreOrGrade: form.scoreOrGrade,
       umbcEquivalent: mappedCredit?.umbcEquivalent,
-      credits: mappedCredit?.credits ?? 3,
+      credits: resolvedCredits,
       category: mappedCredit?.category,
     };
     setTransferCredits([...transferCredits, credit]);
-    setForm({ type: '', subject: '', scoreOrGrade: '' });
+    setForm({ type: '', subject: '', scoreOrGrade: '', creditsOverride: '' });
     setShowForm(false);
   };
 
@@ -408,7 +433,7 @@ function TransferStep({ transferCredits, setTransferCredits }: TransferStepProps
             <label className="block text-xs text-gray-400 mb-1">Type</label>
             <select
               value={form.type}
-              onChange={(e) => setForm({ type: e.target.value, subject: '', scoreOrGrade: '' })}
+              onChange={(e) => setForm({ type: e.target.value, subject: '', scoreOrGrade: '', creditsOverride: '' })}
               className="w-full bg-umbc-gray border border-umbc-gray-light rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-umbc-gold"
             >
               <option value="">— Select type —</option>
@@ -483,6 +508,23 @@ function TransferStep({ transferCredits, setTransferCredits }: TransferStepProps
             </div>
           )}
 
+          {/* Credits override */}
+          <div>
+            <label className="block text-xs text-gray-400 mb-1">
+              Credits <span className="text-gray-600">(override if incorrect)</span>
+            </label>
+            <input
+              type="number"
+              min={0}
+              max={20}
+              step={1}
+              value={form.creditsOverride}
+              onChange={(e) => setForm({ ...form, creditsOverride: e.target.value })}
+              placeholder={mappedCredit ? `Default: ${mappedCredit.credits}` : 'e.g. 3'}
+              className="w-full bg-umbc-gray border border-umbc-gray-light rounded-lg px-3 py-2 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-umbc-gold"
+            />
+          </div>
+
           <div className="flex gap-2 pt-1">
             <button
               type="button"
@@ -496,7 +538,7 @@ function TransferStep({ transferCredits, setTransferCredits }: TransferStepProps
               type="button"
               onClick={() => {
                 setShowForm(false);
-                setForm({ type: '', subject: '', scoreOrGrade: '' });
+                setForm({ type: '', subject: '', scoreOrGrade: '', creditsOverride: '' });
               }}
               className="px-4 py-2 text-sm text-gray-400 hover:text-white border border-umbc-gray-light rounded-lg transition-colors"
             >

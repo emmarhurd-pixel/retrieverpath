@@ -2286,4 +2286,635 @@ export const UMBC_PROGRAMS: Program[] = [
       },
     ],
   },
+
+  // ===================== ADDITIONAL MAJORS =====================
+
+  // Data Science BS
+  {
+    id: 'datasci-bs',
+    name: 'Data Science',
+    type: 'major',
+    department: 'STAT',
+    totalCredits: 120,
+    minUpperDivision: 45,
+    description: 'Bachelor of Science in Data Science',
+    requirements: [
+      {
+        id: 'datasci-core',
+        name: 'Data Science Core',
+        requiredCredits: 21,
+        requiredCourses: ['CMSC 201', 'STAT 355', 'STAT 453', 'STAT 456', 'MATH 151', 'MATH 152', 'MATH 221'],
+        completedCredits: 0,
+      },
+      {
+        id: 'datasci-methods',
+        name: 'Statistical Methods',
+        requiredCredits: 12,
+        electivePool: ['STAT 451', 'STAT 452', 'STAT 455', 'STAT 459', 'STAT 461', 'STAT 463', 'STAT 465'],
+        completedCredits: 0,
+        minUpperDivision: 12,
+        department: 'STAT',
+      },
+      {
+        id: 'datasci-cs',
+        name: 'Computing Electives',
+        requiredCredits: 9,
+        electivePool: ['CMSC 202', 'CMSC 331', 'CMSC 341', 'CMSC 426', 'CMSC 461', 'CMSC 473', 'IS 310', 'IS 450'],
+        completedCredits: 0,
+      },
+      {
+        id: 'datasci-gened',
+        name: 'General Education',
+        requiredCredits: 36,
+        completedCredits: 0,
+      },
+      {
+        id: 'datasci-elec',
+        name: 'Free Electives',
+        requiredCredits: 42,
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  // Cybersecurity BS
+  {
+    id: 'cyber-bs',
+    name: 'Cybersecurity',
+    type: 'major',
+    department: 'CMSC',
+    totalCredits: 120,
+    minUpperDivision: 45,
+    description: 'Bachelor of Science in Cybersecurity',
+    requirements: [
+      {
+        id: 'cyber-core',
+        name: 'Cybersecurity Core',
+        requiredCredits: 30,
+        requiredCourses: ['CMSC 201', 'CMSC 202', 'CMSC 203', 'CMSC 313', 'CMSC 331', 'CMSC 341', 'CMSC 426', 'CMSC 443', 'CMSC 487', 'IS 310'],
+        completedCredits: 0,
+      },
+      {
+        id: 'cyber-upper',
+        name: 'Cybersecurity Upper Division Electives',
+        requiredCredits: 12,
+        electivePool: ['CMSC 421', 'CMSC 435', 'CMSC 447', 'CMSC 461', 'CMSC 473', 'CMSC 481', 'CMSC 483', 'CMSC 491'],
+        completedCredits: 0,
+        minUpperDivision: 12,
+        department: 'CMSC',
+      },
+      {
+        id: 'cyber-math',
+        name: 'Mathematics Requirements',
+        requiredCredits: 16,
+        requiredCourses: ['MATH 151', 'MATH 152', 'MATH 221', 'STAT 355'],
+        completedCredits: 0,
+      },
+      {
+        id: 'cyber-science',
+        name: 'Natural Science',
+        requiredCredits: 8,
+        completedCredits: 0,
+      },
+      {
+        id: 'cyber-gened',
+        name: 'General Education',
+        requiredCredits: 36,
+        completedCredits: 0,
+      },
+      {
+        id: 'cyber-elec',
+        name: 'Free Electives',
+        requiredCredits: 18,
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  // Information Systems BS
+  {
+    id: 'is-bs',
+    name: 'Information Systems',
+    type: 'major',
+    department: 'IS',
+    totalCredits: 120,
+    minUpperDivision: 45,
+    description: 'Bachelor of Science in Information Systems',
+    requirements: [
+      {
+        id: 'is-core',
+        name: 'IS Core',
+        requiredCredits: 30,
+        requiredCourses: ['IS 101', 'IS 201', 'IS 247', 'IS 310', 'IS 320', 'IS 410', 'IS 420', 'IS 430', 'IS 450', 'IS 491'],
+        completedCredits: 0,
+        department: 'IS',
+      },
+      {
+        id: 'is-cs',
+        name: 'Computing Foundation',
+        requiredCredits: 9,
+        requiredCourses: ['CMSC 201', 'CMSC 202', 'CMSC 203'],
+        completedCredits: 0,
+        department: 'CMSC',
+      },
+      {
+        id: 'is-math',
+        name: 'Mathematics',
+        requiredCredits: 7,
+        requiredCourses: ['MATH 106', 'STAT 355'],
+        completedCredits: 0,
+      },
+      {
+        id: 'is-gened',
+        name: 'General Education',
+        requiredCredits: 36,
+        completedCredits: 0,
+      },
+      {
+        id: 'is-elec',
+        name: 'Free Electives',
+        requiredCredits: 38,
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  // Accounting BS
+  {
+    id: 'acct-bs',
+    name: 'Accounting',
+    type: 'major',
+    department: 'ACCT',
+    totalCredits: 120,
+    minUpperDivision: 45,
+    description: 'Bachelor of Science in Accounting',
+    requirements: [
+      {
+        id: 'acct-core',
+        name: 'Accounting Core',
+        requiredCredits: 27,
+        requiredCourses: ['ACCT 210', 'ACCT 211', 'ACCT 301', 'ACCT 302', 'ACCT 310', 'ACCT 320', 'ACCT 330', 'ACCT 401', 'ACCT 410'],
+        completedCredits: 0,
+        department: 'ACCT',
+      },
+      {
+        id: 'acct-biz',
+        name: 'Business Core',
+        requiredCredits: 21,
+        requiredCourses: ['ECON 121', 'ECON 122', 'FIN 301', 'MGMT 310', 'MKTG 301', 'STAT 121', 'BUSI 101'],
+        completedCredits: 0,
+      },
+      {
+        id: 'acct-gened',
+        name: 'General Education',
+        requiredCredits: 36,
+        completedCredits: 0,
+      },
+      {
+        id: 'acct-elec',
+        name: 'Free Electives',
+        requiredCredits: 36,
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  // Business Technology Administration BS
+  {
+    id: 'bta-bs',
+    name: 'Business Technology Administration',
+    type: 'major',
+    department: 'BUSI',
+    totalCredits: 120,
+    minUpperDivision: 45,
+    description: 'Bachelor of Science in Business Technology Administration',
+    requirements: [
+      {
+        id: 'bta-core',
+        name: 'BTA Core',
+        requiredCredits: 33,
+        requiredCourses: ['BUSI 101', 'BUSI 201', 'BUSI 301', 'ECON 121', 'ECON 122', 'FIN 301', 'MGMT 310', 'MKTG 301', 'STAT 121', 'IS 101', 'IS 310'],
+        completedCredits: 0,
+      },
+      {
+        id: 'bta-upper',
+        name: 'Upper Division BTA Electives',
+        requiredCredits: 15,
+        electivePool: ['MGMT 401', 'MGMT 410', 'MGMT 420', 'FIN 401', 'FIN 410', 'MKTG 401', 'IS 420', 'IS 450'],
+        completedCredits: 0,
+        minUpperDivision: 15,
+      },
+      {
+        id: 'bta-gened',
+        name: 'General Education',
+        requiredCredits: 36,
+        completedCredits: 0,
+      },
+      {
+        id: 'bta-elec',
+        name: 'Free Electives',
+        requiredCredits: 36,
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  // Human Services Psychology BS
+  {
+    id: 'hsp-bs',
+    name: 'Human Services Psychology',
+    type: 'major',
+    department: 'PSYC',
+    totalCredits: 120,
+    minUpperDivision: 45,
+    description: 'Bachelor of Science in Human Services Psychology',
+    requirements: [
+      {
+        id: 'hsp-core',
+        name: 'Psychology Core',
+        requiredCredits: 24,
+        requiredCourses: ['PSYC 100', 'PSYC 200', 'PSYC 210', 'PSYC 301', 'PSYC 350', 'PSYC 360', 'PSYC 375', 'PSYC 491'],
+        completedCredits: 0,
+        department: 'PSYC',
+      },
+      {
+        id: 'hsp-upper',
+        name: 'Upper Division Psychology Electives',
+        requiredCredits: 18,
+        electivePool: ['PSYC 311', 'PSYC 315', 'PSYC 320', 'PSYC 330', 'PSYC 340', 'PSYC 355', 'PSYC 370', 'PSYC 380', 'PSYC 385', 'PSYC 390', 'PSYC 395', 'PSYC 401', 'PSYC 410'],
+        completedCredits: 0,
+        minUpperDivision: 18,
+        department: 'PSYC',
+      },
+      {
+        id: 'hsp-gened',
+        name: 'General Education',
+        requiredCredits: 36,
+        completedCredits: 0,
+      },
+      {
+        id: 'hsp-elec',
+        name: 'Free Electives',
+        requiredCredits: 42,
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  // Actuarial Mathematics BS
+  {
+    id: 'actmath-bs',
+    name: 'Actuarial Mathematics',
+    type: 'major',
+    department: 'MATH',
+    totalCredits: 120,
+    minUpperDivision: 45,
+    description: 'Bachelor of Science in Actuarial Mathematics',
+    requirements: [
+      {
+        id: 'actmath-core',
+        name: 'Mathematics Core',
+        requiredCredits: 28,
+        requiredCourses: ['MATH 151', 'MATH 152', 'MATH 221', 'MATH 225', 'MATH 301', 'MATH 302', 'STAT 355', 'STAT 451'],
+        completedCredits: 0,
+        department: 'MATH',
+      },
+      {
+        id: 'actmath-stat',
+        name: 'Statistics Electives',
+        requiredCredits: 12,
+        electivePool: ['STAT 452', 'STAT 453', 'STAT 455', 'STAT 456', 'STAT 459', 'STAT 461', 'STAT 463'],
+        completedCredits: 0,
+        department: 'STAT',
+      },
+      {
+        id: 'actmath-fin',
+        name: 'Finance / Econ',
+        requiredCredits: 6,
+        requiredCourses: ['ECON 121', 'FIN 301'],
+        completedCredits: 0,
+      },
+      {
+        id: 'actmath-gened',
+        name: 'General Education',
+        requiredCredits: 36,
+        completedCredits: 0,
+      },
+      {
+        id: 'actmath-elec',
+        name: 'Free Electives',
+        requiredCredits: 38,
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  // Media and Communication Studies BA
+  {
+    id: 'mcs-ba',
+    name: 'Media and Communication Studies',
+    type: 'major',
+    department: 'MCS',
+    totalCredits: 120,
+    minUpperDivision: 45,
+    description: 'Bachelor of Arts in Media and Communication Studies',
+    requirements: [
+      {
+        id: 'mcs-core',
+        name: 'MCS Core',
+        requiredCredits: 21,
+        requiredCourses: ['MCS 100', 'MCS 201', 'MCS 210', 'MCS 301', 'MCS 310', 'MCS 401', 'MCS 491'],
+        completedCredits: 0,
+        department: 'MCS',
+      },
+      {
+        id: 'mcs-upper',
+        name: 'MCS Upper Division Electives',
+        requiredCredits: 15,
+        electivePool: ['MCS 302', 'MCS 311', 'MCS 320', 'MCS 330', 'MCS 340', 'MCS 350', 'MCS 360', 'MCS 370', 'MCS 380', 'MCS 410', 'MCS 420'],
+        completedCredits: 0,
+        minUpperDivision: 15,
+        department: 'MCS',
+      },
+      {
+        id: 'mcs-gened',
+        name: 'General Education',
+        requiredCredits: 36,
+        completedCredits: 0,
+      },
+      {
+        id: 'mcs-elec',
+        name: 'Free Electives',
+        requiredCredits: 48,
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  // ===================== ADDITIONAL MINORS =====================
+
+  // Data Science Minor
+  {
+    id: 'datasci-minor',
+    name: 'Data Science',
+    type: 'minor',
+    department: 'STAT',
+    totalCredits: 15,
+    description: 'Minor in Data Science',
+    requirements: [
+      {
+        id: 'datasci-minor-core',
+        name: 'Required Courses',
+        requiredCredits: 9,
+        requiredCourses: ['CMSC 201', 'STAT 355', 'STAT 453'],
+        completedCredits: 0,
+      },
+      {
+        id: 'datasci-minor-elec',
+        name: 'Data Science Electives',
+        requiredCredits: 6,
+        electivePool: ['STAT 451', 'STAT 452', 'STAT 456', 'CMSC 426', 'CMSC 473', 'IS 450'],
+        completedCredits: 0,
+        minUpperDivision: 6,
+      },
+    ],
+  },
+
+  // Information Systems Minor
+  {
+    id: 'is-minor',
+    name: 'Information Systems',
+    type: 'minor',
+    department: 'IS',
+    totalCredits: 15,
+    description: 'Minor in Information Systems',
+    requirements: [
+      {
+        id: 'is-minor-core',
+        name: 'Required Courses',
+        requiredCredits: 9,
+        requiredCourses: ['IS 101', 'IS 247', 'IS 310'],
+        completedCredits: 0,
+        department: 'IS',
+      },
+      {
+        id: 'is-minor-elec',
+        name: 'IS Electives',
+        requiredCredits: 6,
+        electivePool: ['IS 320', 'IS 410', 'IS 420', 'IS 430', 'IS 450'],
+        completedCredits: 0,
+        minUpperDivision: 6,
+        department: 'IS',
+      },
+    ],
+  },
+
+  // Cybersecurity Minor
+  {
+    id: 'cyber-minor',
+    name: 'Cybersecurity',
+    type: 'minor',
+    department: 'CMSC',
+    totalCredits: 15,
+    description: 'Minor in Cybersecurity',
+    requirements: [
+      {
+        id: 'cyber-minor-core',
+        name: 'Required Courses',
+        requiredCredits: 9,
+        requiredCourses: ['CMSC 201', 'CMSC 426', 'CMSC 443'],
+        completedCredits: 0,
+        department: 'CMSC',
+      },
+      {
+        id: 'cyber-minor-elec',
+        name: 'Cybersecurity Electives',
+        requiredCredits: 6,
+        electivePool: ['CMSC 431', 'CMSC 447', 'CMSC 481', 'CMSC 483', 'CMSC 487', 'IS 310'],
+        completedCredits: 0,
+        minUpperDivision: 6,
+      },
+    ],
+  },
+
+  // Entrepreneurship Minor
+  {
+    id: 'entr-minor',
+    name: 'Entrepreneurship',
+    type: 'minor',
+    department: 'BUSI',
+    totalCredits: 15,
+    description: 'Minor in Entrepreneurship',
+    requirements: [
+      {
+        id: 'entr-minor-core',
+        name: 'Required Courses',
+        requiredCredits: 9,
+        requiredCourses: ['BUSI 101', 'BUSI 301', 'MGMT 310'],
+        completedCredits: 0,
+      },
+      {
+        id: 'entr-minor-elec',
+        name: 'Entrepreneurship Electives',
+        requiredCredits: 6,
+        electivePool: ['MGMT 401', 'MGMT 410', 'MKTG 301', 'MKTG 401', 'FIN 301', 'IS 310'],
+        completedCredits: 0,
+        minUpperDivision: 6,
+      },
+    ],
+  },
+
+  // ===================== CERTIFICATES =====================
+
+  {
+    id: 'cert-cybersecurity',
+    name: 'Cybersecurity',
+    type: 'certificate',
+    department: 'CMSC',
+    totalCredits: 15,
+    description: 'Certificate in Cybersecurity',
+    requirements: [
+      {
+        id: 'cert-cyber-req',
+        name: 'Required Courses',
+        requiredCredits: 9,
+        requiredCourses: ['CMSC 426', 'CMSC 443', 'CMSC 487'],
+        completedCredits: 0,
+        department: 'CMSC',
+      },
+      {
+        id: 'cert-cyber-elec',
+        name: 'Cybersecurity Electives',
+        requiredCredits: 6,
+        electivePool: ['CMSC 431', 'CMSC 447', 'CMSC 481', 'CMSC 483', 'IS 310', 'IS 420'],
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  {
+    id: 'cert-datasci',
+    name: 'Data Science',
+    type: 'certificate',
+    department: 'STAT',
+    totalCredits: 15,
+    description: 'Certificate in Data Science',
+    requirements: [
+      {
+        id: 'cert-ds-req',
+        name: 'Required Courses',
+        requiredCredits: 9,
+        requiredCourses: ['STAT 355', 'STAT 453', 'CMSC 201'],
+        completedCredits: 0,
+      },
+      {
+        id: 'cert-ds-elec',
+        name: 'Data Science Electives',
+        requiredCredits: 6,
+        electivePool: ['STAT 451', 'STAT 452', 'STAT 456', 'CMSC 426', 'CMSC 473'],
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  {
+    id: 'cert-gerontology',
+    name: 'Gerontology',
+    type: 'certificate',
+    department: 'SOCY',
+    totalCredits: 15,
+    description: 'Certificate in Gerontology',
+    requirements: [
+      {
+        id: 'cert-gero-req',
+        name: 'Required Courses',
+        requiredCredits: 9,
+        requiredCourses: ['SOCY 101', 'SOCY 305', 'PSYC 100'],
+        completedCredits: 0,
+      },
+      {
+        id: 'cert-gero-elec',
+        name: 'Gerontology Electives',
+        requiredCredits: 6,
+        electivePool: ['SOCY 350', 'SOCY 360', 'PSYC 360', 'HLTH 310', 'HLTH 350'],
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  {
+    id: 'cert-writing',
+    name: 'Professional Writing',
+    type: 'certificate',
+    department: 'ENGL',
+    totalCredits: 15,
+    description: 'Certificate in Professional Writing',
+    requirements: [
+      {
+        id: 'cert-writing-req',
+        name: 'Required Courses',
+        requiredCredits: 9,
+        requiredCourses: ['ENGL 100', 'ENGL 301', 'ENGL 303'],
+        completedCredits: 0,
+        department: 'ENGL',
+      },
+      {
+        id: 'cert-writing-elec',
+        name: 'Writing Electives',
+        requiredCredits: 6,
+        electivePool: ['ENGL 302', 'ENGL 310', 'ENGL 315', 'ENGL 320', 'ENGL 325'],
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  {
+    id: 'cert-nonprofit',
+    name: 'Nonprofit Management',
+    type: 'certificate',
+    department: 'POLI',
+    totalCredits: 15,
+    description: 'Certificate in Nonprofit Management',
+    requirements: [
+      {
+        id: 'cert-np-req',
+        name: 'Required Courses',
+        requiredCredits: 9,
+        requiredCourses: ['POLI 100', 'MGMT 310', 'SOCY 101'],
+        completedCredits: 0,
+      },
+      {
+        id: 'cert-np-elec',
+        name: 'Nonprofit Electives',
+        requiredCredits: 6,
+        electivePool: ['POLI 301', 'POLI 310', 'MGMT 401', 'SOCY 350', 'HLTH 310'],
+        completedCredits: 0,
+      },
+    ],
+  },
+
+  {
+    id: 'cert-global-studies',
+    name: 'Global Studies',
+    type: 'certificate',
+    department: 'AMST',
+    totalCredits: 15,
+    description: 'Certificate in Global Studies',
+    requirements: [
+      {
+        id: 'cert-gs-req',
+        name: 'Required Courses',
+        requiredCredits: 9,
+        requiredCourses: ['HIST 100', 'POLI 221', 'SOCY 101'],
+        completedCredits: 0,
+      },
+      {
+        id: 'cert-gs-elec',
+        name: 'Global Studies Electives',
+        requiredCredits: 6,
+        electivePool: ['HIST 301', 'POLI 320', 'ANTH 101', 'AMST 301', 'MCS 310'],
+        completedCredits: 0,
+      },
+    ],
+  },
 ];

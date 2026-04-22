@@ -858,12 +858,10 @@ function TranscriptUpload() {
 // ─── Main Courses Page ────────────────────────────────────────────────────────
 
 export default function Courses() {
-  const { courses, addCourse, updateCourse, deleteCourse } = useStore((s) => ({
-    courses: s.courses,
-    addCourse: s.addCourse,
-    updateCourse: s.updateCourse,
-    deleteCourse: s.deleteCourse,
-  }));
+  const courses = useStore((s) => s.courses);
+  const addCourse = useStore((s) => s.addCourse);
+  const updateCourse = useStore((s) => s.updateCourse);
+  const deleteCourse = useStore((s) => s.deleteCourse);
 
   const [deleteTarget, setDeleteTarget] = useState<Course | null>(null);
 
